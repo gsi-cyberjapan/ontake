@@ -72,15 +72,22 @@ var photos = L.geoJson(ontake_geojson, {
     });
   }
 });
+var dol = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/20140928dol/{z}/{x}/{y}.png', {
+    attribution: '正射画像（9/28）', opacity: 0.9, 
+    minZoom: 10, maxZoom: 20, maxNativeZoom: 18
+  }
+);
 
 var map = L.map('mapdiv', {
   center: [35.8943, 137.4767], zoom: 11,
-  layers: [std, ontake, photos]});
+  layers: [std, ontake, photos, dol]});
 
 var hash = L.hash(map);
 L.control.layers({
   '地理院タイル（標準地図）': std
 }, {
+  '正射画像（9/28）': dol,
   '斜め写真（9/28）': photos,
   '地理院タイル（色別標高図）（z=5以上）': relief,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
