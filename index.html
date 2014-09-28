@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>御嶽山噴火活動に関する情報</title>
+<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.css"/>
+<script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<script src="./leaflet-hash.js"></script>
+<script src="./TileLayer.GeoJSON.js"></script>
+<script src="./h26_0928.js"></script>
+<style>
+body {padding: 0; margin: 0}
+html, body, #mapdiv {height: 100%; width: 100%;}
+.leaflet-container {background: #fff;}
+</style>
+</head>
+<body>
+<div id="mapdiv">
+<script>
+var std = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+    attribution: "地理院タイル（標準地図）", maxZoom: 20, maxNativeZoom: 18, zIndex: 70});
+var relief = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', {
+    attribution: "地理院タイル（色別標高図）", minZoom: 5, maxZoom: 20, maxNativeZoom: 15, zIndex: 90});
+var ontake = L.tileLayer(
+  'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
+    attribution: "火山基本図（御嶽山）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 80});
+var ontakelc = L.tileLayer(
+  'http://geolib.gsi.go.jp/tiles/thematicmap/VLCD/00ontakesan/{z}/{x}/{x}-{y}-{z}.png', {
+    attribution: "火山土地条件図（御嶽山）<a target='_blank' href='http://cyberjapan.jp/legend/ontake_legend.jpg'>凡例</a>",
+    minZoom: 15, maxZoom: 20, maxNativeZoom: 16, zIndex: 90});
+var gazo1 = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg', {
+    attribution: "国土画像情報（第一期：1974～1978年撮影）(z=15以上)",
+    minZoom: 15, maxZoom: 20, maxNativeZoom: 17, zIndex: 90});
+var icons = {
+  '#SYMBOL2.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/184.png'
+  }),
+  '#SYMBOL11.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/185.png'
+  }),
+  '#SYMBOL24.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/186.png'
+  }),
+  '#SYMBOL38.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/187.png'
+  }),
+  '#SYMBOL45.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/188.png'
+  }),
+  '#SYMBOL53.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/181.png'
+  }),
+  '#SYMBOL59.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/182.png'
+  }),
+  '#SYMBOL65.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/183.png'
+  }),
+};
+var photos = L.geoJson(ontake_geojson, {
+  pointToLayer: function(feature, latlng) {
+    return L.marker(latlng, {icon: icons[feature.properties.styleUrl]});
+  },
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.description, {
+      maxWidth: 600
+    });
+  }
+});
+
+var map = L.map('mapdiv', {
+  center: [35.8943, 137.4767], zoom: 11,
+  layers: [std, ontake, photos]});
+
+var hash = L.hash(map);
+L.control.layers({
+  '地理院タイル（標準地図）': std
+}, {
+  '斜め写真（9/28）': photos,
+  '地理院タイル（色別標高図）（z=5以上）': relief,
+  '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
+  '国土画像情報（第一期：1974～1978年撮影）(z=15以上)': gazo1,
+  '火山基本図（御嶽山）（z=17以上）': ontake
+}).addTo(map);
+</script>
+</body>
+</html>
