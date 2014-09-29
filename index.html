@@ -14,7 +14,10 @@
 body {padding: 0; margin: 0}
 html, body, #mapdiv {height: 100%; width: 100%;}
 .leaflet-container {background: #fff;}
-.jump {border: 2px solid #363ffb; background: #fffece; font-size: 14px}
+.button {
+  border: 2px solid #363ffb; background: #fffece; font-size: 14px;
+  width: 90px; height: 40px;
+}
 </style>
 </head>
 <body>
@@ -138,7 +141,7 @@ L.control.layers({}, {
 
 var jump = L.control({position: 'topright'});
 jump.onAdd = function(map) {
-  this._div = L.DomUtil.create('div', 'jump');
+  this._div = L.DomUtil.create('div', 'button');
   this.update();
   return this._div;
 }
@@ -146,6 +149,17 @@ jump.update = function(props) {
   this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図へ</a>";
 }
 jump.addTo(map);
+
+var twitter = L.control({position: 'topright'});
+twitter.onAdd = function(map) {
+  this._div = L.DomUtil.create('div', 'button');
+  this.update();
+  return this._div;
+}
+twitter.update = function(props) {
+  this._div.innerHTML = "<a target='_blank' style='text-decoration: none; color: #363ffb' href='https://twitter.com/gsi_cyberjapan'>更新情報<br/>（Twitter）</a>";
+}
+twitter.addTo(map);
 
 L.control.scale({imperial: false}).addTo(map);
 </script>
