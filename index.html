@@ -8,7 +8,8 @@
 <script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 <script src="./leaflet-hash.js"></script>
 <script src="./TileLayer.GeoJSON.js"></script>
-<script src="./h26_0928.js"></script>
+<script src="./h26_0928.js?20140929"></script>
+<script src="./h26_0929.js?20140929"></script>
 <style>
 body {padding: 0; margin: 0}
 html, body, #mapdiv {height: 100%; width: 100%;}
@@ -36,35 +37,35 @@ var gazo1 = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg', {
     attribution: "国土画像情報（第一期：1974～1978年撮影）(z=15以上)",
     minZoom: 15, maxZoom: 20, maxNativeZoom: 17, zIndex: 90});
-var icons = {
+var icons0928 = {
   '#SYMBOL2.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/184.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/184.png', iconSize: [20, 20]
   }),
   '#SYMBOL11.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/185.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/185.png', iconSize: [20, 20]
   }),
   '#SYMBOL24.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/186.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/186.png', iconSize: [20, 20]
   }),
   '#SYMBOL38.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/187.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/187.png', iconSize: [20, 20]
   }),
   '#SYMBOL45.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/188.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/188.png', iconSize: [20, 20]
   }),
   '#SYMBOL53.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/181.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/181.png', iconSize: [20, 20]
   }),
   '#SYMBOL59.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/182.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/182.png', iconSize: [20, 20]
   }),
   '#SYMBOL65.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/183.png'
+    iconUrl: 'http://cyberjapan.jp/symbols/183.png', iconSize: [20, 20]
   }),
 };
-var photos = L.geoJson(ontake_geojson, {
+var photos0928 = L.geoJson(ontake_geojson0928, {
   pointToLayer: function(feature, latlng) {
-    return L.marker(latlng, {icon: icons[feature.properties.styleUrl]});
+    return L.marker(latlng, {icon: icons0928[feature.properties.styleUrl]});
   },
   onEachFeature: function(feature, layer) {
     layer.bindPopup(feature.properties.description, {
@@ -72,7 +73,43 @@ var photos = L.geoJson(ontake_geojson, {
     });
   }
 });
-var dol = L.tileLayer(
+var icons0929 = {
+  '#SYMBOL2.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/185.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL6.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/186.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL11.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/187.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL15.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/188.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL19.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/181.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL22.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/182.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL26.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/183.png', iconSize: [20, 20]
+  }),
+  '#SYMBOL30.symbolStyle': L.icon({
+    iconUrl: 'http://cyberjapan.jp/symbols/184.png', iconSize: [20, 20]
+  })
+};
+var photos0929 = L.geoJson(ontake_geojson0929, {
+  pointToLayer: function(feature, latlng) {
+    return L.marker(latlng, {icon: icons0929[feature.properties.styleUrl]});
+  },
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.description, {
+      maxWidth: 600
+    });
+  }
+});
+var dol0928 = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/20140928dol/{z}/{x}/{y}.png', {
     attribution: '正射画像（9/28）', opacity: 0.9, 
     minZoom: 10, maxZoom: 20, maxNativeZoom: 18
@@ -81,18 +118,19 @@ var dol = L.tileLayer(
 
 var map = L.map('mapdiv', {
   center: [35.8943, 137.4767], zoom: 11,
-  layers: [std, ontake, photos, dol]});
+  layers: [std, ontake, photos0928, photos0929, dol0928]});
 
 var hash = L.hash(map);
 L.control.layers({
   '地理院タイル（標準地図）': std
 }, {
-  '正射画像（9/28）': dol,
-  '斜め写真（9/28）': photos,
-  '地理院タイル（色別標高図）（z=5以上）': relief,
+  '斜め写真（9/28）': photos0928,
+  '斜め写真（9/29）': photos0929,
+  '正射画像（9/28）': dol0928,
+  '火山基本図（御嶽山）（z=17以上）': ontake,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
-  '国土画像情報（第一期：1974～1978年撮影）(z=15以上)': gazo1,
-  '火山基本図（御嶽山）（z=17以上）': ontake
+  '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1,
+  '地理院タイル（色別標高図）（z=5以上）': relief
 }).addTo(map);
 
 var jump = L.control({position: 'topright'});
