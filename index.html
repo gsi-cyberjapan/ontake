@@ -81,7 +81,7 @@ var dol = L.tileLayer(
 
 var map = L.map('mapdiv', {
   center: [35.8943, 137.4767], zoom: 11,
-  layers: [std, ontake, /*photos,*/ dol]});
+  layers: [std, ontake, photos, dol]});
 
 var hash = L.hash(map);
 L.control.layers({
