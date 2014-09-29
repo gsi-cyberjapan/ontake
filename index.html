@@ -28,8 +28,12 @@ var relief = L.tileLayer(
     attribution: "地理院タイル（色別標高図）", minZoom: 5, maxZoom: 20, maxNativeZoom: 15, zIndex: 90});
 var ontake = L.tileLayer(
   'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
-    attribution: "火山基本図（御嶽山）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    attribution: "火山基本図<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
     minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 80});
+var ontake_transparent = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/20140927d_vlcd_t_ontake/{z}/{x}/{y}.png', {
+    attribution: "火山基本図（透過）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 100});
 var ontakelc = L.tileLayer(
   'http://geolib.gsi.go.jp/tiles/thematicmap/VLCD/00ontakesan/{z}/{x}/{x}-{y}-{z}.png', {
     attribution: "火山土地条件図（御嶽山）<a target='_blank' href='http://cyberjapan.jp/legend/ontake_legend.jpg'>凡例</a>",
@@ -118,8 +122,8 @@ var dol0928 = L.tileLayer(
 );
 
 var map = L.map('mapdiv', {
-  center: [35.8943, 137.4767], zoom: 11,
-  layers: [std, ontake, photos0928, photos0929, dol0928]});
+  center: [35.8829, 137.4714], zoom: 11,
+  layers: [std, ontake_transparent, photos0928, photos0929, dol0928]});
 
 var hash = L.hash(map);
 L.control.layers({
@@ -128,7 +132,8 @@ L.control.layers({
   '斜め写真（9/28）': photos0928,
   '斜め写真（9/29）': photos0929,
   '正射画像（9/28）': dol0928,
-  '火山基本図（御嶽山）（z=17以上）': ontake,
+  '火山基本図（z=17以上）': ontake,
+  '火山基本図（透過）（z=17以上）': ontake_transparent,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
   '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1,
   '地理院タイル（色別標高図）（z=5以上）': relief
