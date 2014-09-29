@@ -23,17 +23,6 @@ html, body, #mapdiv {height: 100%; width: 100%;}
 var std = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
     attribution: "地理院タイル（標準地図）", maxZoom: 20, maxNativeZoom: 18, zIndex: 0});
-/*
-var relief = L.tileLayer(
-  'http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', {
-    attribution: "地理院タイル（色別標高図）", minZoom: 5, maxZoom: 20, maxNativeZoom: 15, zIndex: 1});
-*/
-/*
-var ontake = L.tileLayer(
-  'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
-    attribution: "火山基本図<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
-    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 0});
-*/
 var ontake_transparent = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/20140927d_vlcd_t_ontake/{z}/{x}/{y}.png', {
     attribution: "火山基本図（透過）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
