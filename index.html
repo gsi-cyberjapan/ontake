@@ -124,23 +124,25 @@ var dol0928 = L.tileLayer(
     minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 90
   }
 );
+var dol0929 = L.tileLayer(
+  'http://cyberjapandata.gsi.go.jp/xyz/20140929dol/{z}/{x}/{y}.png', {
+    attribution: '正射画像（9/29）', opacity: 1, 
+    minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 90
+  }
+);
 
 var map = L.map('mapdiv', {
   center: [35.8829, 137.4714], zoom: 11,
-  layers: [std, ontake_transparent, /*photos0928,*/ photos0929, dol0928]});
-
+  layers: [std, ontake_transparent, photos0929, dol0929]});
 var hash = L.hash(map);
-L.control.layers({
-  //'地理院タイル（標準地図）': std
-}, {
+L.control.layers({}, {
   '斜め写真（9/28）': photos0928,
   '斜め写真（9/29）': photos0929,
   '正射画像（9/28）': dol0928,
-//  '火山基本図（z=17以上）': ontake,
+  '正射画像（9/29）': dol0929,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
   '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1
-//  '地理院タイル（色別標高図）（z=5以上）': relief
 }, {
   collapsed: true, autoZIndex: false
 }).addTo(map);
