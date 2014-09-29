@@ -14,6 +14,7 @@
 body {padding: 0; margin: 0}
 html, body, #mapdiv {height: 100%; width: 100%;}
 .leaflet-container {background: #fff;}
+.jump {border: 2px solid #363ffb; background: #fffece; font-size: 14px}
 </style>
 </head>
 <body>
@@ -140,7 +141,7 @@ jump.onAdd = function(map) {
   return this._div;
 }
 jump.update = function(props) {
-  this._div.innerHTML = "<a href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の地理院地図に戻る</a>";
+  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図へ</a>";
 }
 jump.addTo(map);
 </script>
