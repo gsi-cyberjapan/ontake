@@ -94,6 +94,17 @@ L.control.layers({
   '国土画像情報（第一期：1974～1978年撮影）(z=15以上)': gazo1,
   '火山基本図（御嶽山）（z=17以上）': ontake
 }).addTo(map);
+
+var jump = L.control({position: 'topright'});
+jump.onAdd = function(map) {
+  this._div = L.DomUtil.create('div', 'jump');
+  this.update();
+  return this._div;
+}
+jump.update = function(props) {
+  this._div.innerHTML = "<a href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の地理院地図に戻る</a>";
+}
+jump.addTo(map);
 </script>
 </body>
 </html>
