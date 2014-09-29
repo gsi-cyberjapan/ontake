@@ -22,14 +22,18 @@ html, body, #mapdiv {height: 100%; width: 100%;}
 <script>
 var std = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-    attribution: "地理院タイル（標準地図）", maxZoom: 20, maxNativeZoom: 18, zIndex: 70});
+    attribution: "地理院タイル（標準地図）", maxZoom: 20, maxNativeZoom: 18, zIndex: 0});
+/*
 var relief = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', {
-    attribution: "地理院タイル（色別標高図）", minZoom: 5, maxZoom: 20, maxNativeZoom: 15, zIndex: 90});
+    attribution: "地理院タイル（色別標高図）", minZoom: 5, maxZoom: 20, maxNativeZoom: 15, zIndex: 1});
+*/
+/*
 var ontake = L.tileLayer(
   'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
     attribution: "火山基本図<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
-    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 80});
+    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 0});
+*/
 var ontake_transparent = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/20140927d_vlcd_t_ontake/{z}/{x}/{y}.png', {
     attribution: "火山基本図（透過）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
@@ -116,27 +120,29 @@ var photos0929 = L.geoJson(ontake_geojson0929, {
 });
 var dol0928 = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/20140928dol/{z}/{x}/{y}.png', {
-    attribution: '正射画像（9/28）', opacity: 0.9, 
-    minZoom: 10, maxZoom: 20, maxNativeZoom: 18
+    attribution: '正射画像（9/28）', opacity: 1, 
+    minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 90
   }
 );
 
 var map = L.map('mapdiv', {
   center: [35.8829, 137.4714], zoom: 11,
-  layers: [std, ontake_transparent, photos0928, photos0929, dol0928]});
+  layers: [std, ontake_transparent, /*photos0928,*/ photos0929, dol0928]});
 
 var hash = L.hash(map);
 L.control.layers({
-  '地理院タイル（標準地図）': std
+  //'地理院タイル（標準地図）': std
 }, {
   '斜め写真（9/28）': photos0928,
   '斜め写真（9/29）': photos0929,
   '正射画像（9/28）': dol0928,
-  '火山基本図（z=17以上）': ontake,
+//  '火山基本図（z=17以上）': ontake,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
-  '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1,
-  '地理院タイル（色別標高図）（z=5以上）': relief
+  '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1
+//  '地理院タイル（色別標高図）（z=5以上）': relief
+}, {
+  collapsed: false, autoZIndex: false
 }).addTo(map);
 
 var jump = L.control({position: 'topright'});
@@ -149,6 +155,8 @@ jump.update = function(props) {
   this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図へ</a>";
 }
 jump.addTo(map);
+
+L.control.scale({imperial: false}).addTo(map);
 </script>
 </body>
 </html>
