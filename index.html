@@ -26,6 +26,10 @@ html, body, #mapdiv {height: 100%; width: 100%;}
 var std = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
     attribution: "地理院タイル（標準地図）", maxZoom: 20, maxNativeZoom: 18, zIndex: 0});
+var ontake = L.tileLayer(
+  'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
+    attribution: "火山基本図<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 120});
 var ontake_transparent = L.tileLayer(
   'http://cyberjapandata.gsi.go.jp/xyz/20140927d_vlcd_t_ontake/{z}/{x}/{y}.png', {
     attribution: "火山基本図（透過）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
@@ -132,6 +136,7 @@ L.control.layers({}, {
   '斜め写真（9/29）': photos0929,
   '正射画像（9/28）': dol0928,
   '正射画像（9/29）': dol0929,
+  '火山基本図（z=17以上）': ontake,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
   '過去の正射画像（1974年～1978年撮影）(z=15以上)': gazo1
