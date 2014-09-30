@@ -16,8 +16,8 @@ body {padding: 0; margin: 0}
 html, body, #mapdiv {height: 100%; width: 100%;}
 .leaflet-container {background: #fff;}
 .button {
-  border: 2px solid #363ffb; background: #fffece; font-size: 14px;
-  width: 90px; height: 40px;
+  border: 2px solid #363ffb; background: #fffece; font-size: 12px;
+  width: 62px; height: 36px; cursor: pointer;
 }
 </style>
 </head>
@@ -155,6 +155,9 @@ jump_to_escape_route.onAdd = function(map) {
   return this._div;
 }
 jump_to_escape_route.update = function(props) {
+  this._div.addEventListener('click', function() {
+    document.location.href = 'http://gsi-cyberjapan.github.io/escape-route/';
+  });
   this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
 }
 jump_to_escape_route.addTo(map);
@@ -166,7 +169,10 @@ jump.onAdd = function(map) {
   return this._div;
 }
 jump.update = function(props) {
-  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図へ</a>";
+  this._div.addEventListener('click', function() {
+    document.location.href = 'http://portal.cyberjapan.jp/site/mapuse4/index_.html';
+  });
+  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図</a>";
 }
 jump.addTo(map);
 
@@ -177,6 +183,9 @@ twitter.onAdd = function(map) {
   return this._div;
 }
 twitter.update = function(props) {
+  this._div.addEventListener('click', function() {
+    document.location.href = 'https://twitter.com/gsi_cyberjapan';
+  });
   this._div.innerHTML = "<a target='_blank' style='text-decoration: none; color: #363ffb' href='https://twitter.com/gsi_cyberjapan'>更新情報<br/>（Twitter）</a>";
 }
 twitter.addTo(map);
