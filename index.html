@@ -158,7 +158,7 @@ jump_to_escape_route.update = function(props) {
   this._div.addEventListener('click', function() {
     document.location.href = 'http://gsi-cyberjapan.github.io/escape-route/';
   });
-  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
+  this._div.innerHTML = "<a title='Map of Japan' style='text-decoration: none; color: #363ffb' href='http://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
 }
 jump_to_escape_route.addTo(map);
 
@@ -172,7 +172,7 @@ jump.update = function(props) {
   this._div.addEventListener('click', function() {
     document.location.href = 'http://portal.cyberjapan.jp/site/mapuse4/index_.html';
   });
-  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図</a>";
+  this._div.innerHTML = "<a title='GSI Maps' style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図</a>";
 }
 jump.addTo(map);
 
@@ -186,7 +186,7 @@ twitter.update = function(props) {
   this._div.addEventListener('click', function() {
     document.location.href = 'https://twitter.com/gsi_cyberjapan';
   });
-  this._div.innerHTML = "<a target='_blank' style='text-decoration: none; color: #363ffb' href='https://twitter.com/gsi_cyberjapan'>更新情報<br/>（Twitter）</a>";
+  this._div.innerHTML = "<a title='Updates (Twitter)' target='_blank' style='text-decoration: none; color: #363ffb' href='https://twitter.com/gsi_cyberjapan'>更新情報<br/>（Twitter）</a>";
 }
 twitter.addTo(map);
 
