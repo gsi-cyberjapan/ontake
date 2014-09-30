@@ -145,6 +145,17 @@ L.control.layers({}, {
   collapsed: true, autoZIndex: false
 }).addTo(map);
 
+var jump_to_escape_route = L.control({position: 'topright'});
+jump_to_escape_route.onAdd = function(map) {
+  this._div = L.DomUtil.create('div', 'button');
+  this.update();
+  return this._div;
+}
+jump_to_escape_route.update = function(props) {
+  this._div.innerHTML = "<a style='text-decoration: none; color: #363ffb' href='http://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
+}
+jump_to_escape_route.addTo(map);
+
 var jump = L.control({position: 'topright'});
 jump.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'button');
