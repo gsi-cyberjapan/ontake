@@ -131,16 +131,33 @@ var dol0929 = L.tileLayer(
     minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 91
   }
 );
+var sar1409 = L.geoJson(sar1409_geojson, {
+  style: function(feature) {
+    return {stroke: '#f00'};
+  }, 
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.name, {maxWidth: 600});
+  }
+});
+var dol0929_2 = L.tileLayer(
+  'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140929dol2/{z}/{x}/{y}.png', {
+    subdomains: '123',
+    attribution: '正射画像（9/29）', opacity: 1, 
+    minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 91
+  }
+);
 
 var map = L.map('mapdiv', {
   center: [35.892936, 137.480806], zoom: 12, 
-  layers: [std, ontake_transparent, photos0928, photos0929, dol0929]});
+  layers: [std, ontake_transparent, photos0928, photos0929, dol0929_2, sar1409]});
 var hash = L.hash(map);
 L.control.layers({}, {
   '斜め写真（9/28）': photos0928,
   '斜め写真（9/29）': photos0929,
   '正射画像（9/28）': dol0928,
   '正射画像（9/29）': dol0929,
+  '航空機SAR画像（9/29）': dol0929_2,
+  '推定火口（9/30暫定版：航空機SAR画像判読）': sar1409,
   '火山基本図（z=17以上）': ontake,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
   '火山土地条件図（御嶽山）（z=15以上）': ontakelc,
