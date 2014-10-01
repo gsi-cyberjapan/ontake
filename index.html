@@ -155,6 +155,13 @@ var dol0929_2 = L.tileLayer(
     minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 91
   }
 );
+var dol0930 = L.tileLayer(
+  'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140930dol/{z}/{x}/{y}.png', {
+    subdomains: '123',
+    attribution: '正射画像（9/30）', opacity: 1, 
+    minZoom: 10, maxZoom: 20, maxNativeZoom: 18, zIndex: 91
+  }
+);
 
 var map = L.map('mapdiv', {
   center: [35.892936, 137.480806], zoom: 12, 
@@ -166,6 +173,7 @@ L.control.layers({}, {
   '正射画像（9/28）': dol0928,
   '正射画像（9/29）': dol0929,
   '航空機SAR画像（9/29）': dol0929_2,
+  '航空機SAR画像（9/30）': dol0930,
   '推定火口（9/30暫定版：航空機SAR画像判読）<br/>　　凡例　赤：火口　黄色：推定される火口': sar1409,
   '火山基本図（z=17以上）': ontake,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
