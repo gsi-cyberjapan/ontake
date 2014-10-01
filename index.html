@@ -133,7 +133,16 @@ var dol0929 = L.tileLayer(
 );
 var sar1409 = L.geoJson(sar1409_geojson, {
   style: function(feature) {
-    return {stroke: '#f00'};
+    var style = {stroke: 5, fill: false};
+    switch(feature.properties.styleUrl) {
+      case '#POLYGON1':
+        style.color = 'rgba(255, 0, 0, 0.7)';
+        break;
+      case '#POLYGON2':
+        style.color = 'rgba(255, 255, 0, 0.7)';
+        break;
+    }
+    return style;
   }, 
   onEachFeature: function(feature, layer) {
     layer.bindPopup(feature.properties.name, {maxWidth: 600});
