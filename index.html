@@ -133,13 +133,13 @@ var dol0929 = L.tileLayer(
 );
 var sar1409 = L.geoJson(sar1409_geojson, {
   style: function(feature) {
-    var style = {stroke: 5, fill: false};
+    var style = {stroke: 5, fill: false, opacity: 0.5};
     switch(feature.properties.styleUrl) {
       case '#POLYGON1':
-        style.color = L.Browser.ie ? '#f00' : 'rgba(255, 0, 0, 0.7)';
+        style.color = '#f00';
         break;
       case '#POLYGON2':
-        style.color = L.Browser.ie ? '#ff0' : 'rgba(255, 255, 0, 0.7)';
+        style.color = '#ff0';
         break;
     }
     return style;
