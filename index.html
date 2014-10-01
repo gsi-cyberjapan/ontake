@@ -136,10 +136,10 @@ var sar1409 = L.geoJson(sar1409_geojson, {
     var style = {stroke: 5, fill: false};
     switch(feature.properties.styleUrl) {
       case '#POLYGON1':
-        style.color = 'rgba(255, 0, 0, 0.7)';
+        style.color = L.Browser.ie ? '#f00' : 'rgba(255, 0, 0, 0.7)';
         break;
       case '#POLYGON2':
-        style.color = 'rgba(255, 255, 0, 0.7)';
+        style.color = L.Browser.ie ? '#ff0' : 'rgba(255, 255, 0, 0.7)';
         break;
     }
     return style;
