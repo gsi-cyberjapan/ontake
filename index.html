@@ -11,6 +11,7 @@
 <script src="./h26_0928.js?20140929"></script>
 <script src="./h26_0929.js?20140929"></script>
 <script src="./sar1409.min.js"></script>
+<script src="./alossar1409.min.js"></script>
 <script src="http://portal.cyberjapan.jp/tmp/touch_ontake.js"></script>
 <style>
 body {padding: 0; margin: 0}
@@ -148,6 +149,45 @@ var sar1409 = L.geoJson(sar1409_geojson, {
     layer.bindPopup(feature.properties.name, {maxWidth: 600});
   }
 });
+var alossartile1409 = L.tileLayer(
+  'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140818-0929d_sar_ontake/{z}/{x}/{y}.png', {
+    subdomains: '123',
+    attribution: '干渉SAR(8/18-9/29)(ALOS-2)', opacity: 1, 
+    minZoom: 5, maxZoom: 20, maxNativeZoom: 17, zIndex: 91
+  }
+);
+var alossartile140818 = L.tileLayer(
+  'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140818d_mag_ontake/{z}/{x}/{y}.png', {
+    subdomains: '123',
+    attribution: '衛星SAR強度画像(8/18)(ALOS-2)', opacity: 1, 
+    minZoom: 5, maxZoom: 20, maxNativeZoom: 17, zIndex: 91
+  }
+);
+var alossartile140929 = L.tileLayer(
+  'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140929d_mag_ontake/{z}/{x}/{y}.png', {
+    subdomains: '123',
+    attribution: '衛星SAR強度画像(9/29)(ALOS-2)', opacity: 1, 
+    minZoom: 5, maxZoom: 20, maxNativeZoom: 17, zIndex: 91
+  }
+);
+var iconsalos1409 = {
+  '#TEXT1': L.icon({
+    iconUrl: 'http://cyberjapandata.gsi.go.jp/portal/sys/v4/symbols/097.png', iconSize: [20, 20], iconAnchor:[10, 10]
+  }),
+  '#TEXT2': L.icon({
+    iconUrl: 'http://cyberjapandata.gsi.go.jp/portal/sys/v4/symbols/092.png', iconSize: [20, 20], iconAnchor:[10, 10]
+  })
+};
+var alossar1409 = L.geoJson(alossar1409_geojson, {
+  pointToLayer: function(feature, latlng) {
+    return L.marker(latlng, {icon: iconsalos1409[feature.properties.styleUrl]});
+  },
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.name + "<br>" + feature.properties.description, {
+      maxWidth: 600
+    });
+  }
+});
 var dol0929_2 = L.tileLayer(
   'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140929dol2/{z}/{x}/{y}.png', {
     subdomains: '123',
@@ -165,7 +205,7 @@ var dol0930 = L.tileLayer(
 
 var map = L.map('mapdiv', {
   center: [35.892936, 137.480806], zoom: 12, 
-  layers: [std, ontake_transparent, photos0928, photos0929, dol0929_2, sar1409]});
+  layers: [std, ontake_transparent, photos0928, photos0929, alossar1409, alossartile1409]});
 var hash = L.hash(map);
 L.control.layers({}, {
   '斜め写真（9/28）': photos0928,
@@ -174,6 +214,10 @@ L.control.layers({}, {
   '正射画像（9/29）': dol0929,
   '航空機SAR画像（9/29）': dol0929_2,
   '航空機SAR画像（9/30）': dol0930,
+  '干渉SAR(8/18-9/29)(ALOS-2)': alossartile1409,
+  '衛星SAR強度画像(8/18)(ALOS-2)': alossartile140818,
+  '衛星SAR強度画像(9/29)(ALOS-2)': alossartile140929,
+  '干渉SARコメント(ALOS-2)': alossar1409,
   '推定火口（9/30暫定版：航空機SAR画像判読）<br/>　　凡例　赤：火口　黄色：推定される火口': sar1409,
   '火山基本図（z=17以上）': ontake,
   '火山基本図（透過）（z=17以上）': ontake_transparent,
