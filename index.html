@@ -13,7 +13,7 @@
 <script src="./sar1409.min.js"></script>
 <script src="./alossar1409.min.js"></script>
 <script src="./alossar1410.min.js"></script>
-<script src="http://portal.cyberjapan.jp/tmp/touch_ontake.js"></script>
+
 <style>
 body {padding: 0; margin: 0}
 html, body, #mapdiv {height: 100%; width: 100%;}
@@ -33,15 +33,15 @@ var std = L.tileLayer(
     maxZoom: 20, maxNativeZoom: 18, zIndex: 0});
 var ontake = L.tileLayer(
   'http://geolib.gsi.go.jp/tiles/thematicmap/VBM/vbm25ontake/{z}/{x}/{x}-{y}-{z}.png', {
-    attribution: "火山基本図<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    attribution: "火山基本図<a target='_blank' href='https://maps.gsi.go.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
     minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 120});
 var ontake_transparent = L.tileLayer(
   'http://cyberjapandata-t{s}.gsi.go.jp/xyz/20140927d_vlcd_t_ontake/{z}/{x}/{y}.png', {
-    subdomains: '123', attribution: "火山基本図（透過）<a target='_blank' href='http://cyberjapan.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
+    subdomains: '123', attribution: "火山基本図（透過）<a target='_blank' href='https://maps.gsi.go.jp/legend/l_vbm_ontake.jpg'>凡例</a>",
     minZoom: 17, maxZoom: 20, maxNativeZoom: 17, zIndex: 100});
 var ontakelc = L.tileLayer(
   'http://geolib.gsi.go.jp/tiles/thematicmap/VLCD/00ontakesan/{z}/{x}/{x}-{y}-{z}.png', {
-    attribution: "火山土地条件図（御嶽山）<a target='_blank' href='http://cyberjapan.jp/legend/ontake_legend.jpg'>凡例</a>",
+    attribution: "火山土地条件図（御嶽山）<a target='_blank' href='https://maps.gsi.go.jp/legend/ontake_legend.jpg'>凡例</a>",
     minZoom: 15, maxZoom: 20, maxNativeZoom: 16, zIndex: 90});
 var gazo1 = L.tileLayer(
   'http://cyberjapandata-t{s}.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg', {
@@ -49,28 +49,28 @@ var gazo1 = L.tileLayer(
     minZoom: 15, maxZoom: 20, maxNativeZoom: 17, zIndex: 90});
 var icons0928 = {
   '#SYMBOL2.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/184.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/184.png', iconSize: [20, 20]
   }),
   '#SYMBOL11.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/185.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/185.png', iconSize: [20, 20]
   }),
   '#SYMBOL24.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/186.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/186.png', iconSize: [20, 20]
   }),
   '#SYMBOL38.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/187.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/187.png', iconSize: [20, 20]
   }),
   '#SYMBOL45.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/188.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/188.png', iconSize: [20, 20]
   }),
   '#SYMBOL53.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/181.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/181.png', iconSize: [20, 20]
   }),
   '#SYMBOL59.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/182.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/182.png', iconSize: [20, 20]
   }),
   '#SYMBOL65.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/183.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/183.png', iconSize: [20, 20]
   }),
 };
 var photos0928 = L.geoJson(ontake_geojson0928, {
@@ -85,28 +85,28 @@ var photos0928 = L.geoJson(ontake_geojson0928, {
 });
 var icons0929 = {
   '#SYMBOL2.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/185.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/185.png', iconSize: [20, 20]
   }),
   '#SYMBOL6.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/186.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/186.png', iconSize: [20, 20]
   }),
   '#SYMBOL11.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/187.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/187.png', iconSize: [20, 20]
   }),
   '#SYMBOL15.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/188.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/188.png', iconSize: [20, 20]
   }),
   '#SYMBOL19.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/181.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/181.png', iconSize: [20, 20]
   }),
   '#SYMBOL22.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/182.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/182.png', iconSize: [20, 20]
   }),
   '#SYMBOL26.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/183.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/183.png', iconSize: [20, 20]
   }),
   '#SYMBOL30.symbolStyle': L.icon({
-    iconUrl: 'http://cyberjapan.jp/symbols/184.png', iconSize: [20, 20]
+    iconUrl: 'https://maps.gsi.go.jp/portal/sys/v4/symbols/184.png', iconSize: [20, 20]
   })
 };
 var photos0929 = L.geoJson(ontake_geojson0929, {
@@ -254,7 +254,7 @@ jump_to_escape_route.update = function(props) {
   this._div.addEventListener('click', function() {
     document.location.href = 'http://gsi-cyberjapan.github.io/escape-route/';
   });
-  this._div.innerHTML = "<a title='Map of Japan' style='text-decoration: none; color: #363ffb' href='http://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
+  this._div.innerHTML = "<a title='Map of Japan' style='text-decoration: none; color: #363ffb' href='https://gsi-cyberjapan.github.io/escape-route/'>日本地図を<br/>みる</a>";
 }
 jump_to_escape_route.addTo(map);
 
@@ -266,9 +266,9 @@ jump.onAdd = function(map) {
 }
 jump.update = function(props) {
   this._div.addEventListener('click', function() {
-    document.location.href = 'http://portal.cyberjapan.jp/site/mapuse4/index_.html';
+    document.location.href = 'https://maps.gsi.go.jp/';
   });
-  this._div.innerHTML = "<a title='GSI Maps' style='text-decoration: none; color: #363ffb' href='http://portal.cyberjapan.jp/site/mapuse4/index_.html'>通常の<br/>地理院地図</a>";
+  this._div.innerHTML = "<a title='GSI Maps' style='text-decoration: none; color: #363ffb' href='https://maps.gsi.go.jp/'>通常の<br/>地理院地図</a>";
 }
 jump.addTo(map);
 
